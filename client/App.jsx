@@ -11,7 +11,8 @@ class App extends React.Component {
  		super();
  		this.state = {
  			zipcode: 0,
- 			weatherData: {}
+ 			weatherData: {},
+ 			valid: false
  		}
  		this.updateZipcode = this.updateZipcode.bind(this);
 
@@ -28,9 +29,16 @@ class App extends React.Component {
  		.then(response => response.data.current_observation)
  		.then(data => {
  			console.log(data)
- 			this.setState({
- 				weatherData: data
- 			})
+ 			if (data === undefined) {
+ 				this.setState({
+ 					valid: false
+ 				})
+ 			} else {
+	 			this.setState({
+	 				weatherData: data,
+	 				valid: true
+	 			})
+	 		}
  		})
  		.catch(console.log)
  	}
@@ -40,11 +48,14 @@ class App extends React.Component {
 	    <div className="container">
 	      <h1>What's the weather?</h1>
 	      <ZipForm clickHandler={this.updateZipcode} />
-	      { (this.state.zipcode === 0) ? null :
-	      	<div>
+	      { (this.state.valid === false) ? 
+		      (<div>
+		      	<p>Please enter a new zip code</p>
+		      </div>) :
+	      	(<div>
 			      <p>Your Zip code: {this.state.zipcode}</p>
 			      <WeatherData data={this.state.weatherData} />
-			    </div>
+			    </div>)
 		    }
 	    </div>
 	  )
