@@ -1,13 +1,13 @@
 {
   "name": "classexample",
   "version": "1.0.0",
-  "description": "",
+  "description": "Use weather API to get weather data based on user input",
   "main": "webpack.config.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack -w"
   },
-  "author": "",
+  "author": "Impact Fellows",
   "license": "ISC",
   "devDependencies": {
     "babel": "^6.23.0",

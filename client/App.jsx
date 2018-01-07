@@ -24,8 +24,8 @@ class App extends React.Component {
  		this.setState({
  			zipcode: blah.value
  		})
- 		console.log("http://api.wunderground.com/api/d061c4516e8c2edb/conditions/q/" + blah.value + ".json")
- 		axios.get("http://api.wunderground.com/api/d061c4516e8c2edb/conditions/q/" + blah.value + ".json")
+ 		console.log("http://api.wunderground.com/api/" + APIKey + "/conditions/q/" + blah.value + ".json")
+ 		axios.get("http://api.wunderground.com/api/" + APIKey + "/conditions/q/" + blah.value + ".json")
  		.then(response => response.data.current_observation)
  		.then(data => {
  			console.log(data)
